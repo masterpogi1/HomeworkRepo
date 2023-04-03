@@ -22,7 +22,7 @@ public class Calculator extends javax.swing.JFrame {
     public Calculator() {
         initComponents();
         
-        //Check value for milestone1 textbox
+        //Check value for milestone1 textbox 
         
         DocumentListener m1Validator = new DocumentListener() {
             @Override
