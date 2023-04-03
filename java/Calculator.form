@@ -109,19 +109,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="textboxM1">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textboxM1ActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Handler1"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textboxM2">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textboxM2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textboxTA">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textboxTAActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -148,9 +141,6 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textboxFinalActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

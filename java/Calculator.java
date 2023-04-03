@@ -1,5 +1,7 @@
 
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +21,97 @@ public class Calculator extends javax.swing.JFrame {
      */
     public Calculator() {
         initComponents();
+        
+        //Check value for milestone1 textbox
+        
+        DocumentListener m1Validator = new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                validator();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                validator();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                validator();
+            }
+
+            public void validator() {
+                try {
+                    double m1Value = Double.parseDouble(textboxM1.getText());
+
+                    if (m1Value < 0 || m1Value > 25) {
+                        JOptionPane.showMessageDialog(null, "Please enter a value between 0 to 25", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch(NumberFormatException ex) {
+
+                }
+            }
+        };
+        
+        //check value for MileStone 2 textbox
+        
+        DocumentListener m2Validator = new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                validator2();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                validator2();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                validator2();
+            }
+
+            public void validator2() {
+                try {
+                    double m2Value = Double.parseDouble(textboxM2.getText());
+
+                    if (m2Value < 0 || m2Value > 40) {
+                        JOptionPane.showMessageDialog(null, "Please enter a value between 0 to 40", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch(NumberFormatException ex) {
+
+                }
+            }
+        };
+        
+          //check value for terminal assessment textbox
+        
+        DocumentListener taValidator = new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                validator3();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                validator3();
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                validator3();
+            }
+
+            public void validator3() {
+                try {
+                    double taValue = Double.parseDouble(textboxTA.getText());
+
+                    if (taValue < 0 || taValue > 35) {
+                        JOptionPane.showMessageDialog(null, "Please enter a value between 0 to 35", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch(NumberFormatException ex) {
+
+                }
+            }
+        };
+        
+        textboxM1.getDocument().addDocumentListener(m1Validator);
+        textboxM2.getDocument().addDocumentListener(m2Validator);
+        textboxTA.getDocument().addDocumentListener(taValidator);
     }
 
     /**
@@ -49,26 +142,9 @@ public class Calculator extends javax.swing.JFrame {
 
         jLabel3.setText("Terminal Assessment: ");
 
-        textboxM1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxM1ActionPerformed(evt);
-            }
-        });
         textboxM1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Handler1(evt);
-            }
-        });
-
-        textboxM2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxM2ActionPerformed(evt);
-            }
-        });
-
-        textboxTA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxTAActionPerformed(evt);
             }
         });
 
@@ -89,11 +165,6 @@ public class Calculator extends javax.swing.JFrame {
         });
 
         textboxFinal.setEditable(false);
-        textboxFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textboxFinalActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,34 +235,14 @@ public class Calculator extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void textboxM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxM1ActionPerformed
-        // TODO add your handling code here:
-        
-        //Milestone1, value should not be lower than 0 and max of 25
-        
-
-    }//GEN-LAST:event_textboxM1ActionPerformed
-
-    private void textboxM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxM2ActionPerformed
-        // TODO add your handling code here:
-        //Milestone 2, not less than 0 but not more than 40
-        
-    }//GEN-LAST:event_textboxM2ActionPerformed
-
-    private void textboxTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxTAActionPerformed
-        // TODO add your handling code here:
-        
-        //TA, not less than 0 but not more than 35
-    }//GEN-LAST:event_textboxTAActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
         double mileStone1, mileStone2, terminalAssessment, sum;
         
-        mileStone1 =   Integer.parseInt(textboxM1.getText());            
-        mileStone2 = Integer.parseInt(textboxM2.getText());
-        terminalAssessment = Integer.parseInt(textboxTA.getText());
+        mileStone1 =   Double.parseDouble(textboxM1.getText());            
+        mileStone2 = Double.parseDouble(textboxM2.getText());
+        terminalAssessment = Double.parseDouble(textboxTA.getText());
         
         sum = mileStone1+mileStone2+terminalAssessment;
         
@@ -200,22 +251,9 @@ public class Calculator extends javax.swing.JFrame {
              
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void textboxFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textboxFinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textboxFinalActionPerformed
-
     private void Handler1(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Handler1
         // TODO add your handling code here:
         //handle with care
-        try {
-            double m1Value = Integer.parseInt(textboxM1.getText());
-            
-            if (m1Value < 0 || m1Value > 25) {
-                JOptionPane.showMessageDialog(null, "An error occurred!" + textboxM1.getText(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch(NumberFormatException ex) {
-            
-        }
     }//GEN-LAST:event_Handler1
 
     /**
